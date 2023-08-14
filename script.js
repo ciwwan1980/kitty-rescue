@@ -6,6 +6,15 @@ const cat = document.getElementById('cat');
 const catCounter = document.getElementById('cat-counter');
 
 let clickCount = 0;
+let currentImageIndex = 0;
+
+
+const imageUrls = [
+    "images/cat1.jpg",
+    "images/cat2.jpg",
+    "images/cat3.jpg",
+    "images/cat3.jpg"
+];
 
 function handleDonation() {
     const amount = input.value;
@@ -21,8 +30,15 @@ function handleDonation() {
 function catClick() {
     clickCount++;
     catCounter.textContent = `Cat Clicks: ${clickCount}`;
-    document.body.style.background = '#ffc0cb'; 
-    cat.classList.toggle("clicked");
+    document.body.style.background = '#ffc0cb';
+
+   
+    cat.classList.toggle("clicked");    
+    
+        currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+   
+
+    cat.querySelector("img").src = imageUrls[currentImageIndex];
 }
 
 function moveCat() {
